@@ -37,6 +37,7 @@
     <ResourceCompile Include="resources\Resource.rc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
+    <TargetName>Duff.Updater</TargetName>
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{d43266ec-c843-42d0-b129-cb764eec8bb9}</ProjectGuid>
@@ -103,6 +104,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <TargetName>Duff.Updater</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>

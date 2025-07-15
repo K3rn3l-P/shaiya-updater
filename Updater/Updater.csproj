@@ -7,18 +7,18 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Copyright>Copyright (c) 2025 shaiya.dev</Copyright>
-    <Title>Shaiya Updater</Title>
-    <Company>shaiya.dev</Company>
-    <Product>Shaiya Updater</Product>
-    <RepositoryUrl>https://github.com/kurtekat/shaiya-updater</RepositoryUrl>
+    <Copyright>Copyright (c) 2025 Shaiya Duff Inc.</Copyright>
+    <Title>Shaiya Duff Updater</Title>
+    <Company>shaiya.duff</Company>
+    <Product>Shaiya Duff Updater</Product>
+    <RepositoryUrl>https://github.com/K3rn3l-P/shaiya-updater</RepositoryUrl>
     <Authors>$(AssemblyName)</Authors>
     <Description></Description>
     <RepositoryType>git</RepositoryType>
-    <ApplicationIcon>Resources\Icon\IconGroup164.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Icon\Icon3.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <AssemblyVersion>2.3.1.0</AssemblyVersion>
-    <FileVersion>2.3.1.0</FileVersion>
+    <AssemblyVersion>3.8.1.4</AssemblyVersion>
+    <FileVersion>3.8.1.4</FileVersion>
     <Platforms>x86;x64</Platforms>
   </PropertyGroup>
 
@@ -49,7 +49,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\Icon\IconGroup164.ico" />
+    <Content Include="Resources\Icon\Icon3.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -74,6 +74,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Update="Resources\strings.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -82,10 +92,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

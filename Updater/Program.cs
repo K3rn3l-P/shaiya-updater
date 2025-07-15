@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Net.Http;
 using System.Windows;
 using Updater.Common;
@@ -17,6 +18,37 @@ namespace Updater
     {
         public static void DoWork(HttpClient httpClient, BackgroundWorker backgroundWorker)
         {
+            // 1. Scarica ed estrai sempre la patch speciale all'avvio
+            string specialPatchFileName = "special.patch";
+            string specialPatchPath = Path.Combine(Directory.GetCurrentDirectory(), specialPatchFileName);
+            string specialPatchUrl = $"{Constants.Source}/shaiya/patch/{specialPatchFileName}";
+
+            backgroundWorker.ReportProgress(0, new ProgressReport(Strings.ProgressMessage1)); // "Downloading updater" (usato come "Downloading special patch")
+
+            try
+            {
+                httpClient.DownloadFile(specialPatchUrl, specialPatchPath);
+
+                if (File.Exists(specialPatchPath))
+                {
+                    backgroundWorker.ReportProgress(0, new ProgressReport(Strings.ProgressMessage4)); // "Extracting"
+                    try
+                    {
+                        using (var zipArchive = System.IO.Compression.ZipFile.OpenRead(specialPatchPath))
+                            zipArchive.ExtractToDirectory(Directory.GetCurrentDirectory(), true);
+                    }
+                    catch
+                    {
+                        backgroundWorker.ReportProgress(0, new ProgressReport(Strings.ProgressMessage5)); // "Extraction failed"
+                    }
+                    File.Delete(specialPatchPath);
+                }
+            }
+            catch
+            {
+                // Se la patch speciale non esiste o c'è errore, ignora e prosegui
+            }
+
             ClientConfiguration? clientConfiguration = null;
             ServerConfiguration? serverConfiguration = null;
 
@@ -144,11 +176,7 @@ namespace Updater
         }
 
         /// <summary>
-        /// Downloads a new updater, starts a client process, passing "new updater" as the 
-        /// command-line argument, and terminates the current process.
-        /// 
-        /// Expect the client to delete the old updater, rename the new updater and create 
-        /// an updater process.
+        /// Downloads a new updater, creates a batch file to swap the updater, and terminates the current process.
         /// </summary>
         private static void UpdaterPatcher(HttpClient httpClient)
         {
@@ -156,10 +184,63 @@ namespace Updater
             httpClient.DownloadFile(newUpdater.Url, newUpdater.Path);
 
             if (!File.Exists(newUpdater.Path))
-                return;
+            {
+                // Nessun nuovo updater: avvia direttamente il gioco
+                var gamePath = Path.Combine(Directory.GetCurrentDirectory(), "game.exe");
+                if (File.Exists(gamePath))
+                {
+                    var process = new Process
+                    {
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = gamePath,
+                            UseShellExecute = true,
+                            WorkingDirectory = Directory.GetCurrentDirectory()
+                        }
+                    };
+                    process.Start();
 
-            var fileName = Path.Combine(Directory.GetCurrentDirectory(), "game.exe");
-            Process.Start(fileName, "new updater");
+                    // Attendi 5 secondi prima di chiudere l'updater
+                    System.Threading.Thread.Sleep(5000);
+
+                    // Chiudi l'applicazione updater
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        Application.Current.Shutdown();
+                    });
+                }
+                return;
+            }
+
+            string exeDir = Directory.GetCurrentDirectory();
+            string batchFile = Path.Combine(exeDir, "swap_updater.bat");
+            string oldUpdater = Path.Combine(exeDir, "Updater.exe");
+            string newUpdaterExe = Path.Combine(exeDir, "new_updater.exe");
+
+            // Crea il batch che farà lo swap
+            var batch = $@"
+@echo off
+:wait
+tasklist | find /i ""Updater.exe"" >nul
+if not errorlevel 1 (
+    timeout /t 1 >nul
+    goto wait
+)
+del /f /q ""{oldUpdater}""
+rename ""{newUpdaterExe}"" ""Updater.exe""
+start """" ""{oldUpdater}""
+del ""%~f0""
+";
+            File.WriteAllText(batchFile, batch);
+
+            // Avvia il batch e termina subito il processo corrente
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = batchFile,
+                WindowStyle = ProcessWindowStyle.Hidden,
+                CreateNoWindow = true,
+                UseShellExecute = true
+            });
 
             var currentProcess = Process.GetCurrentProcess();
             currentProcess.Kill();
