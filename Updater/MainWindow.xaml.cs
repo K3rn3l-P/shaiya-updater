@@ -1065,10 +1065,14 @@ EFFECTS=TRUE";
 
         private async void Button2_Click(object sender, RoutedEventArgs e)
         {
+            _button2.IsEnabled = false; // Disabilita il pulsante per evitare doppi click
             _button2.Content = _image170;
 
             if (_backgroundWorker1.IsBusy)
+            {
+                _button2.IsEnabled = true; // Riabilita solo se non si avvia il gioco
                 return;
+            }
 
             try
             {
@@ -1084,14 +1088,15 @@ EFFECTS=TRUE";
                 };
                 process.Start();
 
-                // Attendi 5 secondi e poi chiudi il launcher
-                await Task.Delay(15000);
+                // Attendi 10 secondi e poi chiudi il launcher
+                await Task.Delay(10000);
                 Application.Current.Shutdown();
             }
             catch (Exception ex)
             {
                 var caption = Application.ResourceAssembly.GetName().Name;
                 MessageBox.Show(ex.Message, caption, MessageBoxButton.OK, MessageBoxImage.Error);
+                _button2.IsEnabled = true; // Riabilita il pulsante solo in caso di errore
             }
         }
 

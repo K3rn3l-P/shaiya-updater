@@ -17,8 +17,8 @@
     <RepositoryType>git</RepositoryType>
     <ApplicationIcon>Resources\Icon\Icon3.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <AssemblyVersion>3.8.1.4</AssemblyVersion>
-    <FileVersion>3.8.1.4</FileVersion>
+    <AssemblyVersion>3.8.1.5</AssemblyVersion>
+    <FileVersion>3.8.1.5</FileVersion>
     <Platforms>x86;x64</Platforms>
   </PropertyGroup>
 
