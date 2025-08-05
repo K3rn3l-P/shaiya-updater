@@ -1,0 +1,72 @@
+﻿<Window x:Class="Updater.Tool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Updater.Tool"
+        mc:Ignorable="d"
+        Title="Updater Tool" Height="900" Width="900"
+        Background="{DynamicResource BackgroundDarkBrush}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ModernTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!-- Barra superiore con menu segnapagina -->
+        <Border Grid.Row="0" Background="{DynamicResource BackgroundPanelBrush}" CornerRadius="10" Padding="8,4" Margin="0,0,0,12">
+            <DockPanel LastChildFill="False">
+                <!-- Pulsanti menu segnapagina -->
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" VerticalAlignment="Bottom" Margin="0,0,0,0">
+                    <Button x:Name="BtnTabCreaPatch" Content="Crea Patch" Style="{StaticResource ModernTabBookmarkButton}" Click="BtnTabCreaPatch_Click"/>
+                    <Button x:Name="BtnTabApplicaPatch" Content="Applica Patch" Style="{StaticResource ModernTabBookmarkButton}" Click="BtnTabApplicaPatch_Click"/>
+                </StackPanel>
+                <!-- Pulsante impostazioni a destra -->
+                <Button x:Name="SettingsButton"
+                        Style="{StaticResource ModernIconButton}"
+                        DockPanel.Dock="Right"
+                        Click="SettingsButton_Click"
+                        ToolTip="Impostazioni"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+                    <ContentControl Content="⚙️" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+            </DockPanel>
+        </Border>
+        <!-- Content area -->
+        <Grid Grid.Row="1">
+            <Grid x:Name="PanelCreaPatch">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Crea una patch (.patch) da update.sah/update.saf" FontWeight="Bold" Foreground="{DynamicResource AccentBrush}" FontSize="20" Margin="0,0,0,10" Style="{StaticResource ModernTextBlock}"/>
+                    <TextBlock Text="Seleziona una o più cartelle dalla cartella predefinita 'patch':" Style="{StaticResource ModernTextBlock}"/>
+                    <ListBox x:Name="lstPatchFolders" Height="265" SelectionMode="Extended" Style="{StaticResource ModernListBox}" Margin="0,0,0,8"/>
+                    <Button Content="Crea Patch" Click="BtnCreaPatch_Click" Style="{StaticResource ModernButton}"/>
+                    <Button Content="Crea Special Patch" Click="BtnCreaSpecialPatch_Click" Style="{StaticResource ModernButton}" Margin="0,10,0,0"/>
+                    <TextBlock Text="Risultati:" FontWeight="SemiBold" Foreground="{DynamicResource AccentBrush}" Margin="0,18,0,0" Style="{StaticResource ModernTextBlock}"/>
+                    <TextBox x:Name="txtResultCrea" Height="230" Style="{StaticResource ModernTextBox}" TextChanged="txtResultCrea_TextChanged"/>
+                </StackPanel>
+            </Grid>
+            <Grid x:Name="PanelApplicaPatch" Visibility="Collapsed">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Applica una o più patch a data.sah/data.saf" FontWeight="Bold" Foreground="{DynamicResource AccentBrush}" FontSize="20" Margin="0,0,0,10" Style="{StaticResource ModernTextBlock}"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                        <TextBlock Text="Cartella dati (data.sah/saf)" Style="{StaticResource ModernTextBlock}" Width="180" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtDataFolder" Width="400" Margin="0,2,0,0"/>
+                        <Button Content="Scegli cartella" Width="120" Margin="5,0,0,0" Click="BtnBrowseDataFolder_Click" Style="{StaticResource ModernButton}"/>
+                    </StackPanel>
+                    <TextBlock Text="Seleziona una o più patch dalla cartella predefinita 'patch':" Style="{StaticResource ModernTextBlock}"/>
+                    <ListBox x:Name="lstPatchFiles" Height="244" SelectionMode="Extended" Style="{StaticResource ModernListBox}" Margin="0,0,0,8" SelectionChanged="lstPatchFiles_SelectionChanged"/>
+                    <Button Content="Applica Patch" Click="BtnApplicaPatch_Click" Style="{StaticResource ModernButton}"/>
+                    <TextBlock Text="Risultati:" FontWeight="SemiBold" Foreground="{DynamicResource AccentBrush}" Margin="0,18,0,0" Style="{StaticResource ModernTextBlock}"/>
+                    <TextBox x:Name="txtResultApplica" Height="215" Style="{StaticResource ModernTextBox}" TextChanged="txtResultApplica_TextChanged"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

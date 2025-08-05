@@ -35,5 +35,17 @@
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
+
+        <!-- Stile globale per il font custom ITC Benguiat Std Bold Cn (controlla il nome interno del font!) -->
+        <!-- Per scoprire il nome interno: apri il file OTF e guarda il nome in alto -->
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="pack://application:,,,/Updater;component/Resources/Fonts/#ITC Benguiat Std Book" />
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="FontFamily" Value="pack://application:,,,/Updater;component/Resources/Fonts/#ITC Benguiat Std Book" />
+        </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="FontFamily" Value="pack://application:,,,/Updater;component/Resources/Fonts/#ITC Benguiat Std Book" />
+        </Style>
     </Application.Resources>
 </Application>

@@ -220,4 +220,14 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+    <Target Name="CopyDuffUpdaterDllForDotNet" AfterTargets="Build" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PropertyGroup>
+      <TargetDir>$(MSBuildThisFileDirectory)bin\x86\Release\net8.0-windows7.0\</TargetDir>
+    </PropertyGroup>
+    <MakeDir Directories="$(TargetDir)" />
+    <Copy SourceFiles="$(OutDir)Duff.Updater.dll" DestinationFolder="$(TargetDir)" SkipUnchangedFiles="true" />
+  </Target>
+  <Target Name="UpdateInteropVersion" AfterTargets="Build">
+  <Exec Command="powershell -ExecutionPolicy Bypass -File &quot;$(ProjectDir)Update-InteropVersion.ps1&quot;" />
+</Target>
 </Project>

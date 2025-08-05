@@ -417,7 +417,7 @@ namespace Updater
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"An error occurred: {ex.Message} Please try again or contact support.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>Resources\icon\Updater.Tool.ico</ApplicationIcon>
+    <PackageIcon>Updater.Tool.png</PackageIcon>
+    <Copyright>Copyright (c) 2025 Shaiya Duff Inc.</Copyright>
+    <Company>shaiya.duff</Company>
+    <Title>Shaiya Duff Updater</Title>
+    <Product>Shaiya Duff Updater</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Ini" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Updater.Data\Updater.Data.vcxproj" />
+    <ProjectReference Include="..\Updater.Interop\Updater.Interop.vcxproj" />
+    <ProjectReference Include="..\Updater.Tests\Updater.Tests.csproj" />
+    <ProjectReference Include="..\Updater\Updater.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\icon\Updater.Tool.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="Resources\icon\Updater.Tool.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="PostPublishClean" AfterTargets="Publish">
+    <Exec Command="powershell -ExecutionPolicy Bypass -File &quot;$(ProjectDir)scripts\clean-publish.ps1&quot; -publishDir &quot;$(PublishDir)&quot;" />
+  </Target>
+
+</Project>

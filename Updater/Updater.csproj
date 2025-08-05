@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
@@ -17,8 +17,8 @@
 		<RepositoryType>git</RepositoryType>
 		<ApplicationIcon>Resources\Icon\Icon3.ico</ApplicationIcon>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
-		<AssemblyVersion>3.8.1.6</AssemblyVersion>
-		<FileVersion>3.8.1.6</FileVersion>
+    <AssemblyVersion>25.08.05.22</AssemblyVersion>
+    <FileVersion>25.08.05.22</FileVersion>
 		<Platforms>x86;x64</Platforms>
 	</PropertyGroup>
 
@@ -60,6 +60,7 @@
 		<EmbeddedResource Include="Resources\Bitmap\Bitmap185.bmp" />
 		<EmbeddedResource Include="Resources\Bitmap\Bitmap187.bmp" />
 		<EmbeddedResource Include="Resources\Bitmap\Bitmap188.bmp" />
+		<EmbeddedResource Include="..\x64\Release\Duff.Updater.dll" Condition="'$(Platform)'=='x64'" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -111,6 +112,10 @@
 
 	<Target Name="UpdateVersionFromConstants" BeforeTargets="BeforeBuild">
 		<Exec Command="powershell -ExecutionPolicy Bypass -File &quot;$(ProjectDir)Update-Version.ps1&quot; &quot;$(ProjectDir)Common\Constants.cs&quot; &quot;$(ProjectPath)&quot;" />
+	</Target>
+
+	<Target Name="BuildInterop" BeforeTargets="Build;Publish">
+		<MSBuild Projects="..\Updater.Interop\Updater.Interop.vcxproj" Targets="Build" Properties="Configuration=$(Configuration);Platform=$(Platform)" />
 	</Target>
 
 </Project>

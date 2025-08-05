@@ -10,7 +10,7 @@
     <Window.Resources>
         <!-- Stile globale per TextBox -->
         <Style TargetType="TextBox">
-            <Setter Property="FontFamily" Value="Algerian" />
+            <!-- FontFamily rimosso: usa quello globale da App.xaml -->
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="FontSize" Value="16" />
             <Setter Property="Foreground" Value="White" />
@@ -29,7 +29,7 @@
         </Style>
         <!-- Stile moderno gold per i bottoni principali -->
         <Style x:Key="GoldMainButton" TargetType="Button">
-            <Setter Property="FontFamily" Value="Algerian" />
+            <!-- FontFamily rimosso: usa quello globale da App.xaml -->
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="FontSize" Value="20" />
             <Setter Property="Foreground" Value="#FFD700" />
@@ -97,8 +97,8 @@
                 </LinearGradientBrush>
             </ProgressBar.Foreground>
         </ProgressBar>
-        <TextBox x:Name="_textBox1" TextWrapping="Wrap" Margin="457,90,0,0" RenderTransformOrigin="0.515,0.389" Height="22" HorizontalAlignment="Left" VerticalAlignment="Top" Width="235" Grid.Row="2" Grid.Column="1" ClipToBounds="True" SelectionOpacity="0"/>
-        <TextBox x:Name="_textBoxSpeed" TextWrapping="Wrap" Margin="457,57,0,0" RenderTransformOrigin="0.515,0.389" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" Width="235" Grid.Row="2" Grid.Column="1" ClipToBounds="True" SelectionOpacity="0"/>
+        <TextBox x:Name="_textBox1" TextWrapping="Wrap" FontFamily="Algerian" Margin="126,90,0,0" RenderTransformOrigin="0.515,0.389" Height="22" HorizontalAlignment="Left" VerticalAlignment="Top" Width="566" Grid.Row="2" Grid.Column="1" ClipToBounds="True" SelectionOpacity="0"/>
+        <TextBox x:Name="_textBoxSpeed" TextWrapping="Wrap" FontFamily="Algerian" Margin="457,57,0,0" RenderTransformOrigin="0.515,0.389" Height="19" HorizontalAlignment="Left" VerticalAlignment="Top" Width="235" Grid.Row="2" Grid.Column="1" ClipToBounds="True" SelectionOpacity="0"/>
 
         <WebBrowser x:Name="_webBrowser1" Margin="10,26,27,0" Height="5" Focusable="False" VerticalAlignment="Top" Panel.ZIndex="1" RenderTransformOrigin="0.5,0.5">
             <WebBrowser.RenderTransform>

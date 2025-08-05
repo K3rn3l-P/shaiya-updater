@@ -4,7 +4,7 @@ using Updater.Common;
 namespace Updater.Core
 {
     /// <summary>
-    /// Represents a replacement updater application.
+    /// Represents a replacement updater application and its associated DLL.
     /// </summary>
     public sealed class NewUpdater
     {

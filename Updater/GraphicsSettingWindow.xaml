@@ -34,7 +34,7 @@
         <Style TargetType="ComboBox">
             <Setter Property="Foreground" Value="#FFD700"/>
             <Setter Property="Background" Value="#B9000000"/>
-            <Setter Property="FontFamily" Value="Algerian"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Updater;component/Resources/Fonts/#ITC Benguiat Std Book"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="BorderBrush" Value="#FFD700"/>
@@ -89,7 +89,7 @@
         <Style TargetType="ComboBoxItem">
             <Setter Property="Foreground" Value="#FFD700"/>
             <Setter Property="Background" Value="#B9000000"/>
-            <Setter Property="FontFamily" Value="Algerian"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Updater;component/Resources/Fonts/#ITC Benguiat Std Book"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="Padding" Value="6,2,6,2"/>
@@ -114,7 +114,7 @@
         <!-- Centered CheckBox Style -->
         <Style TargetType="CheckBox">
             <Setter Property="Foreground" Value="#FFD700"/>
-            <Setter Property="FontFamily" Value="Algerian"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Updater;component/Resources/Fonts/#ITC Benguiat Std Book"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="Background" Value="Transparent"/>
@@ -147,7 +147,7 @@
         <Style TargetType="TextBox">
             <Setter Property="Foreground" Value="#FFD700"/>
             <Setter Property="Background" Value="#B9000000"/>
-            <Setter Property="FontFamily" Value="Algerian"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Updater;component/Resources/Fonts/#ITC Benguiat Std Book"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="BorderBrush" Value="#FFD700"/>
@@ -155,14 +155,14 @@
         </Style>
         <!-- Style for TabControl and TabItem -->
         <Style TargetType="TabControl">
-            <Setter Property="FontFamily" Value="Algerian"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Updater;component/Resources/Fonts/#ITC Benguiat Std Book"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="Background" Value="#B9000000"/>
             <Setter Property="Foreground" Value="#FFD700"/>
         </Style>
         <Style TargetType="TabItem">
-            <Setter Property="FontFamily" Value="Algerian"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Updater;component/Resources/Fonts/#ITC Benguiat Std Book"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="Background" Value="#B9000000"/>
@@ -172,7 +172,7 @@
         </Style>
         <!-- Style for Buttons (modern gold theme) -->
         <Style TargetType="Button">
-            <Setter Property="FontFamily" Value="Algerian"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Updater;component/Resources/Fonts/#ITC Benguiat Std Book"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Background" Value="#FFD700"/>
@@ -204,7 +204,7 @@
         </Style>
         <!-- Modern gold title style -->
         <Style x:Key="GoldTitle" TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="Algerian"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Updater;component/Resources/Fonts/#ITC Benguiat Std Book"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="32"/>
             <Setter Property="Foreground" Value="#FFD700"/>
@@ -281,7 +281,7 @@
                     <TabItem Header="Video" Height="28" Margin="-2,-2,-2,0" VerticalAlignment="Top">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <StackPanel Margin="10">
-                                <TextBlock Text="Resolution:" Foreground="#FFD700" Margin="0,0,0,5" FontFamily="Algerian" FontWeight="Bold" FontSize="16"/>
+                                <TextBlock Text="Resolution:" Foreground="#FFD700" Margin="0,0,0,5" FontWeight="Bold" FontSize="16"/>
                                 <ComboBox x:Name="ResolutionComboBox" Margin="0,0,0,10">
                                     <ComboBoxItem Content="[INTERFACE_800X600]" />
                                     <ComboBoxItem Content="[INTERFACE_1024X768]" />
@@ -320,13 +320,13 @@
                                     <Slider x:Name="GammaSlider" Grid.Column="2" Minimum="0" Maximum="4" Value="1"
                                             TickFrequency="1" IsSnapToTickEnabled="True" Width="200" />
                                 </Grid>
-                                <TextBlock Text="Texture Quality:" Foreground="#FFD700" Margin="0,10,0,5" FontFamily="Algerian" FontWeight="Bold" FontSize="16"/>
+                                <TextBlock Text="Texture Quality:" Foreground="#FFD700" Margin="0,10,0,5" FontWeight="Bold" FontSize="16"/>
                                 <ComboBox x:Name="TextureComboBox" SelectedIndex="2" Margin="0,0,0,10">
                                     <ComboBoxItem Content="LOW" />
                                     <ComboBoxItem Content="MEDIUM" />
                                     <ComboBoxItem Content="HIGH" />
                                 </ComboBox>
-                                <TextBlock Text="Render Distance:" Foreground="#FFD700" Margin="0,10,0,5" FontFamily="Algerian" FontWeight="Bold" FontSize="16"/>
+                                <TextBlock Text="Render Distance:" Foreground="#FFD700" Margin="0,10,0,5" FontWeight="Bold" FontSize="16"/>
                                 <ComboBox x:Name="RangeComboBox" SelectedIndex="2" Margin="0,0,0,10">
                                     <ComboBoxItem Content="LOW" />
                                     <ComboBoxItem Content="MEDIUM" />
@@ -335,7 +335,7 @@
                                 <CheckBox x:Name="HelmetCheckBox" Content="Helmet" Margin="0,10,0,5" />
                                 <CheckBox x:Name="CloakCheckBox" Content="Mantle" Margin="0,0,0,5" />
                                 <CheckBox x:Name="WeaponEffCheckBox" Content="Weapon Effects" Margin="0,0,0,10" />
-                                <TextBlock Text="QUICK PRESETS:" Foreground="#FFD700" Margin="0,10,0,5" FontFamily="Algerian" FontWeight="Bold" FontSize="18"/>
+                                <TextBlock Text="QUICK PRESETS:" Foreground="#FFD700" Margin="0,10,0,5" FontWeight="Bold" FontSize="18"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                                     <Button Content="LOW" Click="SetLowSettings_Click" Width="120" Background="#B9000000" Foreground="#FFD700" BorderBrush="#FFD700" />
                                     <Button Content="MEDIUM" Click="SetMidSettings_Click" Width="120" Background="#B9000000" Foreground="#FFD700" BorderBrush="#FFD700" />
@@ -348,7 +348,7 @@
                     <TabItem Header="Login">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <StackPanel Margin="10">
-                                <TextBlock Text="Login ID:" Foreground="#FFD700" Margin="0,0,0,5" FontFamily="Algerian" FontWeight="Bold" FontSize="16"/>
+                                <TextBlock Text="Login ID:" Foreground="#FFD700" Margin="0,0,0,5" FontWeight="Bold" FontSize="16"/>
                                 <TextBox x:Name="LoginIDTextBox" Width="200" />
                                 <CheckBox x:Name="SaveLoginCheckBox" Content="Save Login ID" Margin="0,10,0,5" />
                             </StackPanel>
@@ -370,13 +370,13 @@
                     <TabItem Header="Sound">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <StackPanel Margin="10">
-                                <TextBlock Text="Background Music Volume" Foreground="#FFD700" FontFamily="Algerian" FontWeight="Bold" FontSize="16"/>
+                                <TextBlock Text="Background Music Volume" Foreground="#FFD700" FontWeight="Bold" FontSize="16"/>
                                 <Slider x:Name="BGMVolumeSlider" Minimum="0" Maximum="6" Value="3" TickFrequency="0.1" IsSnapToTickEnabled="True"
                                         Width="200" Margin="0,5,0,10" />
-                                <TextBlock Text="Effects Volume" Foreground="#FFD700" FontFamily="Algerian" FontWeight="Bold" FontSize="16"/>
+                                <TextBlock Text="Effects Volume" Foreground="#FFD700" FontWeight="Bold" FontSize="16"/>
                                 <Slider x:Name="EffectsVolumeSlider" Minimum="0" Maximum="6" Value="3" TickFrequency="0.1" IsSnapToTickEnabled="True"
                                         Width="200" Margin="0,5,0,10" />
-                                <TextBlock Text="World Volume" Foreground="#FFD700" FontFamily="Algerian" FontWeight="Bold" FontSize="16"/>
+                                <TextBlock Text="World Volume" Foreground="#FFD700" FontWeight="Bold" FontSize="16"/>
                                 <Slider x:Name="WorldVolumeSlider" Minimum="0" Maximum="6" Value="3" TickFrequency="0.1" IsSnapToTickEnabled="True"
                                         Width="200" Margin="0,5,0,10" />
                             </StackPanel>
@@ -419,9 +419,73 @@
                     </TabItem>
                 </TabControl>
                 <!-- Button Panel -->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10">
-                    <Button Content="CANCEL" Click="CancelButton_Click" Width="120"/>
-                    <Button Content="SAVE" Click="SaveButton_Click" Width="120"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20">
+                    <Button Content="CANCEL" Click="CancelButton_Click" Width="120" Margin="0,0,10,0" Height="25">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="FontFamily" Value="pack://application:,,,/Updater;component/Resources/Fonts/#ITC Benguiat Std Book"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="FontSize" Value="18"/>
+                                <Setter Property="Background" Value="#FFD700"/>
+                                <Setter Property="Foreground" Value="#4B0082"/>
+                                <Setter Property="BorderBrush" Value="#FFD700"/>
+                                <Setter Property="BorderThickness" Value="2"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="2" CornerRadius="8">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#FFF8E36B"/>
+                                                    <Setter Property="Foreground" Value="#B9000000"/>
+                                                </Trigger>
+                                                <Trigger Property="IsPressed" Value="True">
+                                                    <Setter Property="Background" Value="#FFB8860B"/>
+                                                    <Setter Property="Foreground" Value="#FFF"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Content="SAVE" Click="SaveButton_Click" Width="120">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="FontFamily" Value="pack://application:,,,/Updater;component/Resources/Fonts/#ITC Benguiat Std Book"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="FontSize" Value="18"/>
+                                <Setter Property="Background" Value="#FFD700"/>
+                                <Setter Property="Foreground" Value="#4B0082"/>
+                                <Setter Property="BorderBrush" Value="#FFD700"/>
+                                <Setter Property="BorderThickness" Value="2"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="2" CornerRadius="8">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#FFF8E36B"/>
+                                                    <Setter Property="Foreground" Value="#B9000000"/>
+                                                </Trigger>
+                                                <Trigger Property="IsPressed" Value="True">
+                                                    <Setter Property="Background" Value="#FFB8860B"/>
+                                                    <Setter Property="Foreground" Value="#FFF"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
                 </StackPanel>
             </Grid>
         </Border>
