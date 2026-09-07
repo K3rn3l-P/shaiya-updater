@@ -1,92 +1,36 @@
-# Shaiya Updater
+# Shaiya Updater (archived fork)
+
+Fork of [kurtekat/shaiya-updater](https://github.com/kurtekat/shaiya-updater), a WPF-based
+patcher/updater for Shaiya private servers. Archived: dormant since August 2025, no active
+development.
+
+## What this adds
+
+Two native projects on top of the original updater shell:
+
+- **Updater.Data / Updater.Interop** — an implementation of the SAF/SAH binary archive format
+  used by the game client, with a C++/C# interop layer. `DataBuilder` packs a folder tree into an
+  archive; `DataPatcher` compares entry sizes against a baseline and rewrites only the files that
+  changed, backing up the target before touching it.
+- **Updater.Tool / DuffToolCli** — a standalone patch-building tool ("Duff"): builds and applies
+  AES-encrypted, hash-verified patches, independent of the WPF updater itself.
+- A C# test suite for the configuration and patching logic (none existed upstream).
+
+The compiled output of Updater.Tool/DuffToolCli is what
+[UltimateAntiCheat](https://github.com/K3rn3l-P/UltimateAntiCheat) uses as its own
+patch-distribution mechanism — this repo is where that piece was actually built.
 
 ## Environment
 
-Windows 10
+Windows 10, Visual Studio 2022, C# 12, WPF, .NET 8.0, .NET Framework 4.8.
 
-Visual Studio 2022
+## Attribution
 
-C# 12
+The base updater shell, client/server configuration flow and build instructions are
+[kurtekat/shaiya-updater](https://github.com/kurtekat/shaiya-updater), shared as-is by the
+author, no license attached.
 
-Windows Presentation Foundation (WPF)
+## State
 
-## Prerequisites
-
-[Microsoft Visual C++ Redistributable](https://aka.ms/vs/17/release/vc_redist.x86.exe)
-
-[.NET 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
-
-[.NET Framework 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48)
-
-## Dependencies
-
-[Microsoft.AspNet.WebApi.Client](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/)
-
-[Microsoft.Extensions.Configuration.Ini](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Ini/)
-
-## Build
-
-Use **Publish** instead of **Build** to output a single .NET executable. The C++ library will be copied to the publish directory.
-
-## Screenshots
-
-![Capture](https://github.com/kurtekat/shaiya-updater/assets/142125482/ee526f55-5a0f-45fa-a6ed-d231434b21f1)
-
-# Documentation
-
-This project is designed to be like the original application. Users are expected to design the interface and develop the code to suit their needs. The source code is shared as-is, with little or no support from the author.
-
-## Client Configuration
-
-```ini
-; Version.ini
-[Version]
-CheckVersion=3
-CurrentVersion=1
-StartUpdate=UPDATE_END
-```
-
-## Server Configuration
-
-https://github.com/kurtekat/kurtekat.github.io
-
-### Web
-
-```csharp
-// Updater/Common/Constants.cs
-public const string Source = "https://kurtekat.github.io";
-public const string WebBrowserSource = "https://google.com";
-```
-
-## Patching
-
-### Data
-
-https://www.elitepvpers.com/forum/shaiya-private-server/1953495-tool-shaiya-make-exe-client-updater-patcher.html
-
-https://www.elitepvpers.com/forum/shaiya-pserver-guides-releases/4937732-guide-how-delele-files-client-via-updater.html
-
-### Updater
-
-Assign `UpdaterVersion` and build the application.
-
-```csharp
-// Updater/Common/Constants.cs
-public const uint UpdaterVersion = 2;
-```
-
-Rename the executable to `new_updater` and upload it to the expected location.
-
-```
-https://website.com/shaiya/new_updater.exe
-```
-
-Assign `UpdaterVersion` in the configuration file.
-
-```ini
-; https://website.com/shaiya/UpdateVersion.ini
-[Version]
-CheckVersion=3
-UpdaterVersion=2
-PatchFileVersion=10
-```
+Archived, no further changes planned. `Updater/Common/Constants.cs` points at the author's own
+private Tailscale host — replace it with your own server before building.
