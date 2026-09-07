@@ -30,6 +30,12 @@ The base updater shell, client/server configuration flow and build instructions 
 [kurtekat/shaiya-updater](https://github.com/kurtekat/shaiya-updater), shared as-is by the
 author, no license attached.
 
+## Related
+
+Same Shaiya toolchain as
+[PSM_Cmd-SecureCommandChannel](https://github.com/K3rn3l-P/PSM_Cmd-SecureCommandChannel) — same
+author, same period, no code shared between them.
+
 ## State
 
 Archived, no further changes planned. `Updater/Common/Constants.cs` points at the author's own
