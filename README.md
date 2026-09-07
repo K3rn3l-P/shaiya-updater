@@ -36,6 +36,14 @@ Same Shaiya toolchain as
 [PSM_Cmd-SecureCommandChannel](https://github.com/K3rn3l-P/PSM_Cmd-SecureCommandChannel) — same
 author, same period, no code shared between them.
 
+## Security note
+
+`AESHelper.cs` and `HashHelper.cs` both hardcode the same `aesPassword`, used to derive the AES
+key that encrypts patches. It's a test value, not a secret worth keeping — but it's also the only
+thing standing between a patch and anyone who wants to decrypt or forge one. If you actually use
+this code, **generate your own password and don't commit it**: pull it from a config file or an
+environment variable instead.
+
 ## State
 
 Archived, no further changes planned. `Updater/Common/Constants.cs` points at the author's own
